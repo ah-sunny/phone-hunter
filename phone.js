@@ -1,4 +1,4 @@
-const loadPhone = async (searchPhone,isShowAll) =>{
+const loadPhone = async (searchPhone = 13,isShowAll) =>{
     const res = await fetch(`https://openapi.programming-hero.com/api/phones?search=${searchPhone}`);
     const phoneObject = await res.json();
     const phoneData = phoneObject.data;
@@ -26,7 +26,7 @@ if(!isShowAll){
 
 
     phones.forEach(phone => {
-        console.log(phone)
+       // console.log(phone)
         
         //create element
         const phoneDiv =document.createElement('div');
@@ -40,7 +40,7 @@ if(!isShowAll){
           <p>If a dog chews shoes whose shoes does he choose?</p>
           <p class="text-3xl font-bold">$ 900</p>
           <div class="card-actions">
-            <button class="btn btn-primary font-bold">Show Details</button>
+            <button onclick="showDetailsButton('${phone.slug}')" class="btn btn-primary font-bold">Show Details</button>
           </div>
         </div> `;
 
@@ -52,6 +52,38 @@ if(!isShowAll){
     //hide loading
     toggleLoding(false);
 }
+
+//modal for show details 
+const showDetailsButton = async(id)=>{
+  console.log('id : ',id);
+  const res = await fetch(`https://openapi.programming-hero.com/api/phone/${id}`);
+  const data = await res.json();
+  const phone = data.data;
+  handleShowDetails(phone);
+}
+const handleShowDetails = (phone)=>{
+  console.log(phone);
+  // const phoneNameShow = document.getElementById('show_details-Phone_name');
+  // phoneNameShow.innerText =;
+
+
+  const showDetailsContainer = document.getElementById('show_details_container');
+  showDetailsContainer.innerHTML = `
+  <img src="${phone.image}" >
+  <h3 id="show_details-Phone_name" class="font-extrabold text-lg">${ phone?.name}</h3>
+  <p>Band : ${phone?.brand || 'not published'} </p>
+  <p>Display-Size : ${phone?.mainFeatures?.displaySize || 'not published'} </p>
+  <p>Chipset : ${phone?.mainFeatures?.chipSet || 'not published'} </p>
+  <p>Memory : ${phone?.mainFeatures?.memory || 'not published'} </p>
+  <p>Storage : ${phone?.mainFeatures?.storage || 'not published'} </p>
+  <p>Sensor : ${phone?.mainFeatures?.sensors}  </p>
+  `;
+
+  show_details.showModal();
+}
+
+
+
 
 const searchHandle = (isShowAll) =>{
     toggleLoding(true);
@@ -80,4 +112,4 @@ const showAllHandle = ()=>{
 
 
 
-//loadPhone();
+loadPhone();

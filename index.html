@@ -12,18 +12,40 @@
 </head>
 
 <body class="container mx-auto">
-    <header>
-        <h1 class="text-3xl lg:text-7xl text-center m-auto font-extrabold mb-10">Hunting phone </h1>
+    <header class="w-[90%] m-auto my-6">
+        <nav class="flex justify-between">
+            <div  class=" text-4xl font-extrabold">
+                <p>Hunting phone</p>
+            </div>
+            <div>
+                <ul class="hidden lg:flex gap-8 font-bold">
+                    <li><a href="">Home</a></li>
+                    <li><a href="">About</a></li>
+                    <li><a href="">Destination</a></li>
+                    <li><a href="">Search</a></li>
+                </ul>
+            </div>
+            <div class=" flex gap-2 p-2 text-xl font-bold rounded-xl  border-[#1DD10066] border-2 text-primary-clr bg-[#1DD1001A] ">
+                <p>Phones point</p>
+                <!-- <img src="./images/bus-icon.png" alt=""> -->
+            </div>
+        </nav>
+
+        <!-- <h1 class="text-3xl lg:text-6xl text-center m-auto font-extrabold mb-10">Hunting phone </h1> -->
 
     </header>
     <main>
         <section>
             <!-- search bar -->
-            <div class="bg-gray-300 p-5 mb-4 rounded-2xl">
-                <input id="search_phone" type="text" placeholder="search your phone"
-                    class="input input-bordered input-secondary w-full max-w-xs" />
-                <button onclick="searchHandle()" class="btn btn-active btn-accent">search</button>
+            <div class="bg-gray-300 p-5 mb-4 rounded-2xl space-y-2">
+                <h1 class="text-4xl underline text-center font-bold ">Search Your Phone</h1>
+                <div class="text-center space-x-5">
+                    <input id="search_phone" type="text" placeholder="search your phone"
+                        class="input input-bordered input-secondary w-full max-w-xs" />
+                    <button onclick="searchHandle()" class="btn btn-active btn-accent">search</button>
+                </div>
             </div>
+           
             <!-- loading -->
             <div id="loading_infinity" class="hidden text-center mt-24 ">
                 <span class="loading loading-infinity loading-lg"></span>
@@ -37,12 +59,63 @@
             <div onclick="showAllHandle()" id="show-button" class="hidden my-7 text-center">
                 <button class="btn btn-active btn-secondary">Show all</button>
             </div>
+
+
+<!-- modal for details -->
+        <div>
+<dialog id="show_details" class="modal modal-bottom sm:modal-middle h-auto">
+  <div class="modal-box ">
+    <div id="show_details_container" class="py-4 space-y-2 h-auto">
+
+    </div>
+    <div class="modal-action">
+      <form method="dialog">
+        <button class="btn">Close</button>
+      </form>
+    </div>
+  </div>
+</dialog>
+        </div>
+
+        
         </section>
 
-    </main>
-    <footer>
+        
 
-    </footer>
+    </main>
+
+    <footer class="p-14 lg:p-20 bg-neutral">
+        <div class="footer items-center  text-neutral-content  border-b-2 border-dashed pb-9 ">
+        
+            <aside class=" flex flex-col gap-5">
+              <h1 class="text-6xl font-extrabold ">Hunting phone</h1>
+              <p>Hunting phone is a digital platform to make tour daily commutinh better</p> 
+            </aside> 
+            <nav class="grid-cols-1 gap-4 md:place-self-center md:justify-self-end">
+              <h1>Download our app</h1>
+              <div class="flex gap-2 bg-black p-4 border-2 border-white rounded-2xl">
+                    <img src="./images/playstore.png" alt="">
+                    <div>
+                        <p class="font-medium">GET IT ON</p>
+                        <h1 class="text-3xl font-bold">Google Play</h1>
+                    </div>
+              </div>
+            </nav>
+    
+        </div> 
+        <div class=" flex flex-col lg:flex-row gap-5 justify-between text-white my-5 lg:my-9">
+                <div>
+                    <p>Copyright © All right reserved, P-Ticket service limited 2024</p>
+                </div>
+                <div class=" flex flex-col lg:flex-row gap-5">
+                    <p>Terms & Condition</p>
+                    <p>Return & refund policy</p>
+                    <p>Privacy policy</p>
+                </div>
+        </div>
+    
+    </footer> 
+    
 
     <script src="./phone.js"></script>
 </body>
