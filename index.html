@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
 
 </head>
+
 <body class="container mx-auto">
     <header>
         <h1 class="text-3xl lg:text-7xl text-center m-auto font-extrabold mb-10">Hunting phone </h1>
@@ -16,22 +18,33 @@
     </header>
     <main>
         <section>
+            <!-- search bar -->
             <div class="bg-gray-300 p-5 mb-4 rounded-2xl">
-                <input id="search_phone" type="text" placeholder="search your phone" class="input input-bordered input-secondary w-full max-w-xs" />
+                <input id="search_phone" type="text" placeholder="search your phone"
+                    class="input input-bordered input-secondary w-full max-w-xs" />
                 <button onclick="searchHandle()" class="btn btn-active btn-accent">search</button>
             </div>
-        <div id="phone_container" class="grid grid-cols-1 lg:grid-cols-3 gap-5 ">
+            <!-- loading -->
+            <div id="loading_infinity" class="hidden text-center mt-24 ">
+                <span class="loading loading-infinity loading-lg"></span>
+                <!-- <progress class="progress w-56 progress-secondary"></progress> -->
+            </div>
+            <!-- phones -->
+            <div id="phone_container" class="grid grid-cols-1 lg:grid-cols-3 gap-5 ">
 
-        </div>
-    </section>
-
-
+            </div>
+            <!--show all btn  -->
+            <div onclick="showAllHandle()" id="show-button" class="hidden my-7 text-center">
+                <button class="btn btn-active btn-secondary">Show all</button>
+            </div>
+        </section>
 
     </main>
     <footer>
 
     </footer>
 
-<script src="./phone.js"></script>
+    <script src="./phone.js"></script>
 </body>
+
 </html>

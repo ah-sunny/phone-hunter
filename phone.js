@@ -1,16 +1,30 @@
-const loadPhone = async (searchPhone) =>{
+const loadPhone = async (searchPhone,isShowAll) =>{
     const res = await fetch(`https://openapi.programming-hero.com/api/phones?search=${searchPhone}`);
     const phoneObject = await res.json();
     const phoneData = phoneObject.data;
-    showPhones(phoneData);
+    showPhones(phoneData,isShowAll);
 }
 
-const showPhones = phones =>{
+const showPhones = (phones,isShowAll) =>{
     //parent div
     const phoneContainer = document.getElementById('phone_container');
     //claer phone container before adding new 
     phoneContainer.textContent = '';
     
+//display "show all" button -- if
+const showButton = document.getElementById('show-button') 
+if(phones.length > 5 && !isShowAll){
+    showButton.classList.remove('hidden');
+}else{
+    showButton.classList.add('hidden');
+}    
+
+//display only 5 before click "showAll" button
+if(!isShowAll){
+  phones = phones.slice(0,5)
+}
+
+
     phones.forEach(phone => {
         console.log(phone)
         
@@ -33,16 +47,37 @@ const showPhones = phones =>{
       //append
       phoneContainer.appendChild(phoneDiv);
 
-
-        
     });
+
+    //hide loading
+    toggleLoding(false);
 }
 
-const searchHandle = () =>{
+const searchHandle = (isShowAll) =>{
+    toggleLoding(true);
     const inputElement = document.getElementById('search_phone');
     const searchText = inputElement.value;
     //console.log(searchText);
-    loadPhone(searchText);
+    loadPhone(searchText,isShowAll);
 }
+
+//loading 
+const toggleLoding = (isLoading) =>{
+  const loding = document.getElementById('loading_infinity');
+  if(isLoading){
+    loding.classList.remove('hidden');
+  }else{
+    loding.classList.add('hidden')
+  }
+
+}
+//showAll handle
+const showAllHandle = ()=>{
+  const showAllButton = document.getElementById('show-button');
+  searchHandle(true);
+}
+
+
+
 
 //loadPhone();
