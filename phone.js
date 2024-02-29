@@ -37,7 +37,7 @@ if(!isShowAll){
         </figure>
         <div class="card-body items-center text-center">
           <h2 class="card-title">${phone.phone_name}</h2>
-          <p>If a dog chews shoes whose shoes does he choose?</p>
+          <p>Mobile phone is a portable device that enables communication over long distances without wires.</p>
           <p class="text-3xl font-bold">$ 900</p>
           <div class="card-actions">
             <button onclick="showDetailsButton('${phone.slug}')" class="btn btn-primary font-bold">Show Details</button>
